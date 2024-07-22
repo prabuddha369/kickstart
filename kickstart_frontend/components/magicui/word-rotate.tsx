@@ -50,7 +50,7 @@ export default function WordRotate({
           className={cn(className, "mb-2")}
         >
           <h1
-            
+            className="pb-2"
             style={{
               backgroundClip: "text",
               WebkitBackgroundClip: "text",
