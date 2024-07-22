@@ -5,14 +5,14 @@ import { useEffect, useRef, useState } from "react";
 export const BackgroundGradientAnimation = ({
   gradientBackgroundStart = "rgb(108, 0, 162)",
   gradientBackgroundEnd = "rgb(0, 17, 82)",
-  firstColor = "18, 113, 255",
-  secondColor = "221, 74, 255",
-  thirdColor = "100, 220, 255",
-  fourthColor = "200, 50, 50",
-  fifthColor = "180, 180, 50",
-  pointerColor = "140, 100, 255",
-  size = "80%",
-  blendingValue = "hard-light",
+  firstColor = "180, 0, 255",
+  secondColor = "50, 33, 123",
+  thirdColor = "253, 12, 68",
+  fourthColor = "255, 140, 91",
+  fifthColor = "180, 0, 255",
+  pointerColor = "62, 77, 210",
+  size = "200%",
+  blendingValue = "soft-light",
   children,
   className,
   interactive = true,
@@ -111,10 +111,10 @@ export const BackgroundGradientAnimation = ({
           </filter>
         </defs>
       </svg>
-      <div className={cn("", className)}>{children}</div>
+      <div className={cn("bg-black/40", className)}>{children}</div>
       <div
         className={cn(
-          "gradients-container h-full w-full blur-lg",
+          "gradients-container h-full w-full blur-lg bg-black/40",
           isSafari ? "blur-2xl" : "[filter:url(#blurMe)_blur(40px)]"
         )}
       >
@@ -134,7 +134,7 @@ export const BackgroundGradientAnimation = ({
             `[transform-origin:calc(50%-400px)]`,
             `animate-second`,
             `opacity-100`
-          )}
+          )}  
         ></div>
         <div
           className={cn(
