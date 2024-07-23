@@ -18,14 +18,14 @@ export default function Home() {
           gradientBackgroundStart="#0E0E0E"
           interactive={false}
         >
-          <div className="absolute z-10 inset-0 flex items-center justify-center text-white font-bold px-4 pointer-events-none text-2xl text-center md:text-4xl lg:text-[64px]">
-            <div className="w-[90%] flex items-center justify-center gap-32 ">
-              <div className="flex items-start flex-col w-[70%] py-4 gap-10">
+          <div className="absolute z-10 inset-0 flex items-center justify-center text-white font-bold px-4 pointer-events-none text-xl text-center md:text-4xl lg:text-[64px]">
+            <div className="w-[90%] flex flex-col items-center justify-center gap-32 ">
+              <div className="flex items-center flex-col w-[90%] py-4 ">
                 <p>The all-in-one community</p>
-                <div className="flex w-full place-items-baseline items-baseline gap-5">
+                <div className="flex flex-col w-full place-items-baseline items-center">
                   <p className="">platform for</p>
                   <WordRotate
-                    className="text-2xl text-center md:text-4xl lg:text-[64px] font-bold"
+                    className="text-xl text-center md:text-4xl lg:text-[64px] font-bold"
                     words={rotateWords}
                   />
                 </div>
@@ -40,14 +40,14 @@ export default function Home() {
           </div>
         </BackgroundGradientAnimation>
       </div>
-      <div className="absolute top-[80%] border-8  border-[#111315] w-[40%]  rounded-full mt-10 bg-white">
+      <div className="absolute top-[80%] border-8  border-[#111315] w-[80%] rounded-full mt-10 bg-white">
         <div className="relative min-w-full flex items-center justify-between ps-2">
           <input
             type="text"
             placeholder="Enter your email"
-            className="px-2 w-[68.3%] py-[2px] border-transparent focus:border-transparent focus:ring-0 focus:outline-none text-2xl bg-white"
+            className="px-2 w-[68.3%] py-[2px] border-transparent focus:border-transparent focus:ring-0 focus:outline-none text-xl bg-white"
           />
-          <button className=" right-[20%] p-3 px-5 text-white  rounded-full bg-gradient-to-r to-[#DC3838] from-[#3E4DD2] text-[18px] focus:border-transparent focus:ring-0 focus:outline-none font-semibold">
+          <button className=" right-[20%] py-4 px-2 text-white  rounded-full bg-gradient-to-r to-[#DC3838] from-[#3E4DD2] text-[10px] focus:border-transparent focus:ring-0 focus:outline-none font-semibold">
             Sign up for Kickstart
           </button>
         </div>

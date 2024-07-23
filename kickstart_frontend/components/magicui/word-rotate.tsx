@@ -47,10 +47,10 @@ export default function WordRotate({
         <motion.div
           key={words[index].word}
           {...framerProps}
-          className={cn(className, "mb-2")}
+          className={cn(className, "")}
         >
           <h1
-            className="pb-2"
+            className=""
             style={{
               backgroundClip: "text",
               WebkitBackgroundClip: "text",

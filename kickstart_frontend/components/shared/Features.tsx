@@ -4,8 +4,11 @@ import { FaCircle } from 'react-icons/fa';
 
 const Features = () => {
   return (
-    <div className="w-full flex flex-col items-center justify-center  mt-32 p-16">
-    <ul className="timeline timeline-vertical h-screen">
+    <div className="w-full flex flex-col items-center justify-center mt-4 px-16">
+      <span className= "pb-5 font-bold text-[20px]">
+        FEATURES
+      </span>
+    <ul className="timeline timeline-vertical h-fit">
       {features.map((feature, index) => {
         
         if (index % 2 === 0) {
