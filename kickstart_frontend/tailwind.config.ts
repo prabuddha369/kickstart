@@ -67,22 +67,28 @@ const config = {
           sm: "calc(var(--radius) - 4px)",
         },
         animation: {
-          first: "moveVertical 30s ease infinite",
-          second: "moveInCircle 20s reverse infinite",
-          third: "moveInCircle 40s linear infinite",
-          fourth: "moveHorizontal 40s ease infinite",
-          fifth: "moveInCircle 20s ease infinite",
+          pulse: "4s cubic-bezier(0.4, 0, 0.6, 1) infinite",
+          slideInLeft: 'slideInLeft 0.6s ease-out forwards',
+          slideInRight: 'slideInRight 0.6s ease-out forwards',
         },
         keyframes: {
+          slideInLeft: {
+            '0%, 100%': { transform: 'translateX(-100%)', opacity: '0' },
+            '50%': { transform: 'translateX(0)', opacity: '1' },
+          },
+          slideInRight: {
+            '0%, 100%': { transform: 'translateX(100%)', opacity: '0' },
+            '50%': { transform: 'translateX(0)', opacity: '1' },
+          },
           moveHorizontal: {
             "0%": {
-              transform: "translateX(-50%) translateY(-10%)",
+              opacity: 1,
             },
             "50%": {
-              transform: "translateX(50%) translateY(10%)",
+              opacity: .7,
             },
             "100%": {
-              transform: "translateX(-50%) translateY(-10%)",
+              opacity: 1,
             },
           },
           moveInCircle: {

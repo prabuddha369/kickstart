@@ -42,7 +42,7 @@ export default function WordRotate({
   }, [words, duration, index]);
 
   return (
-    <div >
+    <div>
       <AnimatePresence mode="wait">
         <motion.div
           key={words[index].word}

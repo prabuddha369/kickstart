@@ -1,49 +1,102 @@
-import { features } from '@/constants';
 import React from 'react'
+import Image from 'next/image';
 import { FaCircle } from 'react-icons/fa';
 
 const Features = () => {
+  const features = [
+    {
+      title: "Freelancing",
+    },
+    {
+      title: "escrow payment system",
+    },
+    {
+      title: "Project Showcasing",
+    },
+    {
+      title: "AI Roadmaps",
+    },
+    {
+      title: "E-Hackathons",
+    },
+  ];
   return (
-    <div className="w-full flex flex-col items-center justify-center mt-4 px-16">
-      <span className= "pb-5 font-bold text-[20px]">
-        FEATURES
+    <div className="w-full flex flex-col mt-4 px-16 bg-gradient-to-b from-[#000000] to-[#323030]">
+      <span className= "py-20 flex flex-row gap-2 text-4xl">
+        <Image src='/Features.svg' alt="Feature Icon" height={40} width={40}/>
+        Features
       </span>
-    <ul className="timeline timeline-vertical h-fit">
-      {features.map((feature, index) => {
-        
-        if (index % 2 === 0) {
-          return (
-            <li key={index}>
-                <hr className=" bg-gradient-to-r from-[#5611E7] to-[#BB0EE6] " />
+    <ul className="timeline timeline-vertical h-fit text-sm md:text-xl">
+            <li className='h-[200px]'>
+                <hr className="bg-gradient-to-r from-[#5611E7] to-[#BB0EE6]"/>
+
               <div
-                className={`timeline-start timeline-box bg-[${feature.color}] border-none`}
+                className={`timeline-start md:px-20 timeline-box rounded-full p-4 border-none bg-[#1D8F9F]`}
               >
-                {feature.title}
+                {features[0].title}
               </div>
               <div className="timeline-middle">
-                <FaCircle className="text-[#5611E7]" />
+                <FaCircle className="text-[#5611E7]" size={30}/>
               </div>
               <hr className=" bg-gradient-to-r from-[#5611E7] to-[#BB0EE6] " />
             </li>
-          );
-        } else {
-          return (
-            <li key={index}>
+
+            <li>
                 <hr className=" bg-gradient-to-r from-[#5611E7] to-[#BB0EE6] " />
                 
               <div className="timeline-middle">
-                <FaCircle className="text-[#5611E7]" />
+                <FaCircle className="text-[#5611E7]" size={30}/>
               </div>
               <div
-                className={`timeline-end timeline-box bg-[${feature.color}] border-none `}
+                className={`timeline-end md:px-20 timeline-box rounded-full p-4 bg-[#927731] border-none `}
               >
-                {feature.title}
+                {features[1].title}
               </div>
               <hr className=" bg-gradient-to-r from-[#5611E7] to-[#BB0EE6] " />
             </li>
-          );
-        }
-      })}
+
+            <li className='h-[200px]'>
+                <hr className="bg-gradient-to-r from-[#5611E7] to-[#BB0EE6]"/>
+
+              <div
+                className={`timeline-start md:px-20 timeline-box rounded-full p-4 border-none bg-[#146145]`}
+              >
+                {features[2].title}
+              </div>
+              <div className="timeline-middle">
+                <FaCircle className="text-[#5611E7]" size={30}/>
+              </div>
+              <hr className=" bg-gradient-to-r from-[#5611E7] to-[#BB0EE6] " />
+            </li>
+
+            <li>
+                <hr className=" bg-gradient-to-r from-[#5611E7] to-[#BB0EE6] " />
+                
+              <div className="timeline-middle">
+                <FaCircle className="text-[#5611E7]" size={30}/>
+              </div>
+              <div
+                className={`timeline-end md:px-20 timeline-box rounded-full p-4 bg-[#611643] border-none `}
+              >
+                {features[3].title}
+              </div>
+              <hr className=" bg-gradient-to-r from-[#5611E7] to-[#BB0EE6] " />
+            </li>
+
+            <li className='h-[200px]'>
+                <hr className="bg-gradient-to-r from-[#5611E7] to-[#BB0EE6]"/>
+
+              <div
+                className={`timeline-start md:px-20 timeline-box rounded-full p-4 border-none bg-[#5C2D12]`}
+              >
+                {features[4].title}
+              </div>
+              <div className="timeline-middle">
+                <FaCircle className="text-[#5611E7]" size={30}/>
+              </div>
+              <hr className=" bg-gradient-to-r from-[#5611E7] to-[#BB0EE6] " />
+            </li>
+
     </ul>
     </div>
   )

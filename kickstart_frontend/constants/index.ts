@@ -44,26 +44,3 @@ export const what_how_who = [
     bg_to: "390C0C",
   },
 ];
-
-export const features = [
-  {
-    title: "Freelancing",
-    color: "#1D8F9F",
-  },
-  {
-    title: "2- step escrow based payment",
-    color: "#927731",
-  },
-  {
-    title: "College Project Showcasing",
-    color: "#146145",
-  },
-  {
-    title: "Advanced AI Roadmaps",
-    color: "#611643",
-  },
-  {
-    title: "E-Hackathons Hosting",
-    color: "#5C2D12",
-  },
-];
