@@ -4,7 +4,7 @@ import React from "react";
 
 const WhatHowWhom = () => {
   return (
-    <div className="w-full flex flex-col justify-center items-center md:items-start mt-40 md:mt-24 md:p-8 md:ps-16 gap-5 hover:bg-black/50 rounded-3xl transition-all ease-in-out duration-300 ">
+    <div className="w-full flex flex-col justify-center items-center md:items-start mt-60 md:mt-24 md:p-8 md:ps-16 gap-5 hover:bg-black/50 rounded-3xl transition-all ease-in-out duration-300 ">
       {what_how_who.map((item, index) => {
         if (index === 0) {
           return (

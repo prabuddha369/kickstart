@@ -21,7 +21,7 @@ function Header() {
       }}>
           Sign In
         </button>
-        <button className='w-fit py-[9px] px-4 rounded-full bg-gradient-to-tr to-[#7A278F] from-[#150A35] text-[12px] font-semibold' onClick={() => {
+        <button className='md:block hidden w-fit py-[9px] px-4 rounded-full bg-gradient-to-tr to-[#7A278F] from-[#150A35] text-[12px] font-semibold' onClick={() => {
         toast.success('Coming Soon...',
           {
             icon: '🚀',
