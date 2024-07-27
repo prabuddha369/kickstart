@@ -1,5 +1,5 @@
 "use client";
-import { cn, unsanitizeEmail } from "@/lib/utils";
+import { addUsersToDB, cn, unsanitizeEmail } from "@/lib/utils";
 import React from "react";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -29,8 +29,8 @@ import {
   CommandList,
 } from "@/components/ui/command";
 import { CheckIcon } from "lucide-react";
-import { PopoverClose } from "@radix-ui/react-popover";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 
 interface PageProps {
   params: {
@@ -54,7 +54,7 @@ const types = [
 
 const page = ({ params }: PageProps) => {
   const email = params.id;
-
+  const router = useRouter();
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -73,9 +73,25 @@ const page = ({ params }: PageProps) => {
     // Do something with the form values.
     // ✅ This will be type-safe and validated.
 
-    // addUserToDb(values)
-    console.log(values);
+    addUsersToDB(values)
+      .then(() => {
+        console.log("User added to DB");
+        const from = "Acme <onboarding@resend.dev>"
+        const to = values.email;
+        const subject = "Thank you for joining the waitlist!";
+        const content = {
+          authorName: "Kickstart",
+          authorImage: "/logo_image.svg",
+          reviewText: "Thank you for joining the waitlist! We will notify you once we are ready to launch.",
+        };
+        router.push("/");
+
+      })
+      .catch((error) => {
+        console.error("Error adding user to DB: ", error);
+      });
   }
+
   return (
     <div className="bg-[url('/formbg_mob.png')] md:bg-[url('/formbg.png')] w-full h-screen flex items-center flex-col md:flex-row p-3 gap-5">
       <div className="md:w-1/2 flex items-center justify-center">
