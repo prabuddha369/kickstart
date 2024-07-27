@@ -1,9 +1,32 @@
 import { type ClassValue, clsx } from "clsx"
 import { twMerge } from "tailwind-merge"
+import { doc, setDoc } from "firebase/firestore";
+import { db } from "../firebase";
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs))
 }
+
+interface User {
+  name: string;
+  email: string;
+  birth_year: number;
+  type: string;
+}
+
+export const addUsersToDB = async (user: User): Promise<void> => {
+  try {
+    await setDoc(doc(db, "users", user.email), {
+      name: user.name,
+      email: user.email,
+      birth_year: user.birth_year,
+      type: user.type,
+    });
+    console.log("Document written with ID:", user.email);
+  } catch (error) {
+    console.error("Error adding document: ", error);
+  }
+};
 
 export function sanitizeEmail(email: string): string {
   // Replace '@' with '_'
