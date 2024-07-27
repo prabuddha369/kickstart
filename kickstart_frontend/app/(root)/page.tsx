@@ -1,11 +1,22 @@
+"use client"
 import WordRotate from "@/components/magicui/word-rotate";
 import Features from "@/components/shared/Features";
 import Header from "@/components/shared/Header";
 import WhatHowWhom from "@/components/shared/WhatHowWhom";
 import { rotateWords } from "@/constants";
 import Image from "next/image";
-
+import { useState } from "react";
+import { useRouter } from "next/navigation";
+import { sanitizeEmail } from "@/lib/utils";
 export default function Home() {
+  const router = useRouter();
+  const [email, setEmail] = useState("");
+  
+  function handleJoinWaitlist(): void {
+    console.log(sanitizeEmail(email));
+    router.push(`/test/${sanitizeEmail(email)}`);
+  }
+
   return (
     <main className="w-full flex flex-col bg-[#111315] items-center pb-6">
       <Header />
@@ -41,11 +52,14 @@ export default function Home() {
       </div>
       <div className="absolute top-[70%] md:top-[88%] border-8 border-[#111315] w-[90%] md:w-[40%] rounded-full bg-white flex flex-row justify-between ps-6">
         <input
-          type="text"
+          type="email"
           placeholder="Email address"
+          onChange={(e) => setEmail(e.target.value)}
           className="w-[40%] md:w-[50%] justify-start text-black border-transparent focus:border-transparent focus:ring-0 focus:outline-none md:text-[20px] bg-white placeholder-[#7F7F7F]"
         />
-        <button className="py-3 px-6 text-white cursor-pointer rounded-full bg-gradient-to-r to-[#DC3838] from-[#3E4DD2] md:text-[16px] focus:border-transparent focus:ring-0 focus:outline-none font-semibold">
+        <button 
+        onClick={handleJoinWaitlist}
+        className="py-3 px-6 text-white cursor-pointer rounded-full bg-gradient-to-r to-[#DC3838] from-[#3E4DD2] md:text-[16px] focus:border-transparent focus:ring-0 focus:outline-none font-semibold">
           sign up for Kickstart
         </button>
       </div>

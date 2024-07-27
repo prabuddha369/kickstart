@@ -8,7 +8,7 @@ export function cn(...inputs: ClassValue[]) {
 }
 
 interface User {
-  name: string;
+  fullName: string;
   email: string;
   birth_year: number;
   type: string;
@@ -17,7 +17,7 @@ interface User {
 export const addUsersToDB = async (user: User): Promise<void> => {
   try {
     await setDoc(doc(db, "users", user.email), {
-      name: user.name,
+      name: user.fullName,
       email: user.email,
       birth_year: user.birth_year,
       type: user.type,
