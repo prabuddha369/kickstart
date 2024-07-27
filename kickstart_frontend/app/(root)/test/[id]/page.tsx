@@ -112,6 +112,8 @@ function onSubmit(values: z.infer<typeof formSchema>) {
             background: '#333',
             color: '#fff',
           },
+          duration: 8000,
+          position="bottom-center",
         }
       );
 
