@@ -2,30 +2,29 @@ import WordRotate from "@/components/magicui/word-rotate";
 import Features from "@/components/shared/Features";
 import Header from "@/components/shared/Header";
 import WhatHowWhom from "@/components/shared/WhatHowWhom";
-import { BackgroundGradientAnimation } from "@/components/ui/BackgroundGradient";
 import { rotateWords } from "@/constants";
 import Image from "next/image";
 
 export default function Home() {
   return (
-    <div className="w-full flex flex-col gap-10 bg-[#111315] items-center px-6 pb-6">
+    <main className="w-full flex flex-col bg-[#111315] items-center pb-6">
       <Header />
-      <div className="w-full h-[80vh] mb-10">
-        <BackgroundGradientAnimation
-          containerClassName="w-full h-[100%] rounded-[48px] mt-16 px-5 mb-20"
-          gradientBackgroundEnd="#0E0E0E"
-          className=""
-          gradientBackgroundStart="#0E0E0E"
-          interactive={false}
-        >
-          <div className="absolute z-10 inset-0 flex items-center justify-center text-white font-bold px-4 pointer-events-none text-2xl text-center md:text-4xl lg:text-[64px]">
-            <div className="w-[90%] flex items-center justify-center gap-32 ">
-              <div className="flex items-start flex-col w-[70%] py-4 gap-10">
+      <div className="w-[96%] h-[60vh] md:h-[80vh]">
+
+        <div className="relative mt-16 overflow-hidden h-[105%] w-full rounded-3xl">
+          <div className="absolute top-10 left-5 bg-[#0011FF] filter blur-[12rem] h-80 w-80 animate-pulse "></div>
+          <div className="absolute top-60 left-[20%] bg-[#53217B] filter blur-[10rem] h-80 w-80 animate-pulse "></div>
+          <div className="absolute top-10 left-[55%] bg-[#DE0034] filter blur-[10rem] h-[100%] w-40 animate-pulse "></div>
+          <div className="absolute top-10 left-[80%] bg-[#FF8C5B] filter blur-[12rem] h-80 w-80 animate-pulse "></div>
+
+          <div className="absolute z-10 cursor-default font-bold w-full h-full text-2xl md:text-[2.6rem] flex items-center justify-center">
+            <div className="w-[90%] flex flex-col md:flex-row justify-center items-center gap-20 md:gap-0">
+              <div className="flex text-center md:text-start flex-col md:gap-4 w-full pt-10">
                 <p>The all-in-one community</p>
-                <div className="flex w-full place-items-baseline items-baseline gap-5">
+                <div className="flex flex-col md:flex-row w-full place-items-baseline items-center">
                   <p className="">platform for</p>
                   <WordRotate
-                    className="text-2xl text-center md:text-4xl lg:text-[64px] font-bold"
+                    className="text-center ps-4"
                     words={rotateWords}
                   />
                 </div>
@@ -38,24 +37,23 @@ export default function Home() {
               />
             </div>
           </div>
-        </BackgroundGradientAnimation>
-      </div>
-      <div className="absolute top-[80%] border-8  border-[#111315] w-[40%]  rounded-full mt-10 bg-white">
-        <div className="relative min-w-full flex items-center justify-between ps-2">
-          <input
-            type="text"
-            placeholder="Enter your email"
-            className="px-2 w-[68.3%] py-[2px] border-transparent focus:border-transparent focus:ring-0 focus:outline-none text-2xl bg-white"
-          />
-          <button className=" right-[20%] p-3 px-5 text-white  rounded-full bg-gradient-to-r to-[#DC3838] from-[#3E4DD2] text-[18px] focus:border-transparent focus:ring-0 focus:outline-none font-semibold">
-            Sign up for Kickstart
-          </button>
         </div>
       </div>
+      <div className="absolute top-[70%] md:top-[88%] border-8 border-[#111315] w-[90%] md:w-[40%] rounded-full bg-white flex flex-row justify-between ps-6">
+        <input
+          type="text"
+          placeholder="Email address"
+          className="w-[40%] md:w-[50%] justify-start text-black border-transparent focus:border-transparent focus:ring-0 focus:outline-none md:text-[20px] bg-white placeholder-[#7F7F7F]"
+        />
+        <button className="py-3 px-6 text-white cursor-pointer rounded-full bg-gradient-to-r to-[#DC3838] from-[#3E4DD2] md:text-[16px] focus:border-transparent focus:ring-0 focus:outline-none font-semibold">
+          sign up for Kickstart
+        </button>
+      </div>
+
 
       <WhatHowWhom />
 
       <Features />
-    </div>
+    </main>
   );
 }
