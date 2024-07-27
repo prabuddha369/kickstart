@@ -8,13 +8,29 @@ import Image from "next/image";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { sanitizeEmail } from "@/lib/utils";
+import toast from "react-hot-toast";
 export default function Home() {
   const router = useRouter();
   const [email, setEmail] = useState("");
-  
+
   function handleJoinWaitlist(): void {
-    console.log(sanitizeEmail(email));
-    router.push(`/test/${sanitizeEmail(email)}`);
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    if (email !== "" && emailRegex.test(email)) {
+      console.log(sanitizeEmail(email));
+      router.push(`/test/${sanitizeEmail(email)}`);
+    } else {
+      toast.error('Enter a valid email',
+        {
+          icon: '❌',
+          style: {
+            borderRadius: '10px',
+            background: '#333',
+            color: '#fff',
+          },
+        }
+      );
+    }
   }
 
   return (
@@ -57,9 +73,9 @@ export default function Home() {
           onChange={(e) => setEmail(e.target.value)}
           className="w-[40%] md:w-[50%] justify-start text-black border-transparent focus:border-transparent focus:ring-0 focus:outline-none md:text-[20px] bg-white placeholder-[#7F7F7F]"
         />
-        <button 
-        onClick={handleJoinWaitlist}
-        className="py-3 px-6 text-white cursor-pointer rounded-full bg-gradient-to-r to-[#DC3838] from-[#3E4DD2] md:text-[16px] focus:border-transparent focus:ring-0 focus:outline-none font-semibold">
+        <button
+          onClick={handleJoinWaitlist}
+          className="py-3 px-6 text-white cursor-pointer rounded-full bg-gradient-to-r to-[#DC3838] from-[#3E4DD2] md:text-[16px] focus:border-transparent focus:ring-0 focus:outline-none font-semibold">
           sign up for Kickstart
         </button>
       </div>

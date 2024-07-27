@@ -1,51 +1,26 @@
-import ContactEmailTemplate from "@/components/shared/EmailTemplate";
-import { NextRequest, NextResponse } from "next/server";
-
-import {Resend} from 'resend';
+import { EmailTemplate } from '@/components/shared/EmailTemplate';
+import { Resend } from 'resend';
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
-interface Tag {
-  name: string;
-  value: string;
-}
-
-interface Content {
-    authorName: string;
-    authorImage: string;
-    reviewText: string;
-}
-
-interface Props {
-
-  from: string;
-  to: string | string[];
-  bcc?: string | string[];
-  cc?: string | string[];
-  html?: string;
-  reply_to?: string;
-  subject: string;
-  content: Content;
-  headers?: any;
-  attachments?: Buffer | string;
-  tags?: Tag[];
-}
-export async function POST(request: NextRequest) {
-    const body = await request.json();
-    let{from, to, bcc, cc, html, reply_to, subject, content, headers, attachments, tags}: Props = body;
+export async function POST(req : Request) {
   try {
-    await resend.emails.send({
-      from,
-      to,
-      subject,
-      react: ContactEmailTemplate({ 
-        ...content
-       }),
-      text: subject, // Add the missing 'text' property
+    const body = await req.json();
+    const { fullName, email, birth_year, type} = body;
+
+    const { data, error } = await resend.emails.send({
+      from: 'Acme <onboarding@resend.dev>',
+      to: [email],
+      subject: 'Thankyou for joining Kickstart',
+      react: EmailTemplate({ firstName: fullName }),
     });
 
-    return NextResponse.json({status: 200});
+    if (error) {
+      return Response.json({ error }, { status: 500 });
+    }
+
+    return Response.json(data);
   } catch (error) {
-    return NextResponse.json({ error });
+    return Response.json({ error }, { status: 500 });
   }
 }

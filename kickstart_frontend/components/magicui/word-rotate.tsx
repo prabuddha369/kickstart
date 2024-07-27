@@ -34,7 +34,6 @@ export default function WordRotate({
   useEffect(() => {
     const interval = setInterval(() => {
       setIndex((prevIndex) => (prevIndex + 1) % words.length);
-      console.log(`word at index ${index}:`, words[index]);
     }, duration);
 
     // Clean up interval on unmount
