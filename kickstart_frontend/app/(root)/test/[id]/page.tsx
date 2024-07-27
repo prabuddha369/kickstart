@@ -112,8 +112,9 @@ const page = ({ params }: PageProps) => {
         console.log("User added to DB");
         // sendEmail(values);
         router.push("/");
-        toast.success('Thanks for joining Kickstart! You are now on our waitlist! Stay tuned for updates and get ready for something great.',
+        toast('Thanks for joining Kickstart! You are now on our waitlist! Stay tuned for updates and get ready for something great.',
           {
+             position: "top-center",
             icon: '🎉',
             style: {
               borderRadius: '10px',
@@ -132,10 +133,6 @@ const page = ({ params }: PageProps) => {
 
   return (
     <div className="bg-[url('/formbg_mob.png')] md:bg-[url('/formbg.png')] w-full h-screen flex items-center flex-col md:flex-row p-3 gap-5">
-      <Toaster
-        position="bottom-center"
-        reverseOrder={false}
-      />
       <div className="md:w-1/2 flex items-center justify-center md:my-0 my-10">
         <Image src={'/logo.svg'} width={275} height={200} alt="Kickstart logo" className="md:w-[500px]" />
       </div>
