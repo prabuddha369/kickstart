@@ -56,7 +56,7 @@ const types = [
   { value: "college_university", label: "College or University" },
 ];
 
-const page = ({ params }: PageProps) => {
+const Waitlist = ({ params }: PageProps) => {
   const email = params.id;
   const resend = new Resend(process.env.NEXT_PUBLIC_RESEND_API_KEY);
   const router = useRouter();
@@ -300,4 +300,4 @@ const page = ({ params }: PageProps) => {
   );
 };
 
-export default page;
+export default Waitlist;
