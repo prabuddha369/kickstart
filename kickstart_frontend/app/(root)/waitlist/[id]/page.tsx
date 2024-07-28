@@ -1,6 +1,6 @@
 "use client";
 import { addUsersToDB, cn, unsanitizeEmail } from "@/lib/utils";
-import React from "react";
+import React, { useState } from "react";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
@@ -51,16 +51,15 @@ const formSchema = z.object({
 });
 
 const types = [
-  { value: "student", label: "Student" },
-  { value: "small_mid_business", label: "Small to Mid Business" },
-  { value: "college_university", label: "College or University" },
+  { value: "freelancer", label: "freelancer" },
+  { value: "startup or business", label: "startup or business" },
+  { value: "college or university", label: "college or university" },
 ];
 
 const Waitlist = ({ params }: PageProps) => {
   const email = params.id;
-  const resend = new Resend(process.env.NEXT_PUBLIC_RESEND_API_KEY);
+  const [popoverOpen, setPopoverOpen] = useState(false);
   const router = useRouter();
-  const popoverRef = useRef<any>(null);
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -76,32 +75,31 @@ const Waitlist = ({ params }: PageProps) => {
     yearArray.push(year);
   }
 
-  const closePopover = () => {
-    if (popoverRef.current) {
-      popoverRef.current.click(); // Simulate a click to close the popover
-    }
+  const handleSelect = (typeValue: string) => {
+    form.setValue('type', typeValue);
+    setPopoverOpen(false); // Close the popover when an item is selected
   };
 
-  async function sendEmail(values: z.infer<typeof formSchema>) {
-    try {
-      const response = await fetch('/api/send', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(values),
-      });
+  // async function sendEmail(values: z.infer<typeof formSchema>) {
+  //   try {
+  //     const response = await fetch('/api/send', {
+  //       method: 'POST',
+  //       headers: {
+  //         'Content-Type': 'application/json',
+  //       },
+  //       body: JSON.stringify(values),
+  //     });
 
-      const data = await response.json();
-      if (response.ok) {
-        console.log('Email sent successfully:', data);
-      } else {
-        console.error('Failed to send email:', data);
-      }
-    } catch (error) {
-      console.error('Error sending email:', error);
-    }
-  }
+  //     const data = await response.json();
+  //     if (response.ok) {
+  //       console.log('Email sent successfully:', data);
+  //     } else {
+  //       console.error('Failed to send email:', data);
+  //     }
+  //   } catch (error) {
+  //     console.error('Error sending email:', error);
+  //   }
+  // }
 
 
 
@@ -114,7 +112,7 @@ const Waitlist = ({ params }: PageProps) => {
         router.push("/");
         toast('Thanks for joining Kickstart! You are now on our waitlist! Stay tuned for updates and get ready for something great.',
           {
-             position: "top-center",
+            position: "top-center",
             icon: '🎉',
             style: {
               borderRadius: '10px',
@@ -234,7 +232,7 @@ const Waitlist = ({ params }: PageProps) => {
               render={({ field }) => (
                 <FormItem className="flex flex-col">
                   <FormLabel className="text-xl">Select Your Status</FormLabel>
-                  <Popover>
+                  <Popover open={popoverOpen} onOpenChange={setPopoverOpen}>
                     <PopoverTrigger asChild>
                       <FormControl>
                         <Button
@@ -246,18 +244,14 @@ const Waitlist = ({ params }: PageProps) => {
                           )}
                         >
                           {field.value
-                            ? types.find((type) => type.value === field.value)
-                              ?.label
+                            ? types.find((type) => type.value === field.value)?.label
                             : "Select type"}
                         </Button>
                       </FormControl>
                     </PopoverTrigger>
-                    <PopoverContent className="w-[200px] p-0  bg-white text-black">
+                    <PopoverContent className="w-[200px] p-0 bg-white text-black">
                       <Command>
-                        <CommandInput
-                          placeholder="Search Type..."
-                          className="h-9"
-                        />
+                        <CommandInput placeholder="Search Type..." className="h-9" />
                         <CommandList>
                           <CommandEmpty>No type found.</CommandEmpty>
                           <CommandGroup>
@@ -265,9 +259,7 @@ const Waitlist = ({ params }: PageProps) => {
                               <CommandItem
                                 value={type.label}
                                 key={type.value}
-                                onSelect={() => {
-                                  form.setValue("type", type.value);
-                                }}
+                                onSelect={() => handleSelect(type.value)}
                               >
                                 {type.label}
                                 <CheckIcon
