@@ -184,7 +184,7 @@ const Waitlist = ({ params }: PageProps) => {
                             role="combobox"
                             className={cn(
                               "w-full justify-between bg-white text-black",
-                              !field.value && "text-[#7a7a7a]", "hover: "
+                              !field.value && "text-[#7a7a7a] hover:text-white",
                             )}
                           >
                             {field.value
@@ -194,11 +194,11 @@ const Waitlist = ({ params }: PageProps) => {
                           </Button>
                         </FormControl>
                       </PopoverTrigger>
-                      <PopoverContent className="w-[200px] p-0 bg-white text-black">
+                      <PopoverContent className="w-[200px] p-0 bg-white text-black ">
                         <Command>
                           <CommandInput
                             placeholder="Search Type..."
-                            className="h-9"
+                            className="h-9 "
                           />
                           <CommandList>
                             <CommandEmpty>No type found.</CommandEmpty>
@@ -207,6 +207,7 @@ const Waitlist = ({ params }: PageProps) => {
                                 <CommandItem
                                   value={type.label}
                                   key={type.value}
+                                  className="hover:bg-[#574ab9] hover:text-white"
                                   onSelect={() => handleSelect(type.value)}
                                 >
                                   {type.label}
