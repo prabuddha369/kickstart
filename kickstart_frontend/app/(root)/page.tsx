@@ -12,7 +12,7 @@ export default function Home() {
       <div className="w-[96%] h-[60vh] md:h-[80vh]">
 
         <div className="relative mt-16 overflow-hidden h-[105%] w-full rounded-3xl">
-          <div className="absolute top-10 left-5 bg-[#0011FF] filter blur-[12rem] h-80 w-80 animate-pulse "></div>
+          <div className="absolute top-10 left-5 bg-[#0011FC] filter blur-[12rem] h-80 w-80 animate-pulse "></div>
           <div className="absolute top-60 left-[20%] bg-[#53217B] filter blur-[10rem] h-80 w-80 animate-pulse "></div>
           <div className="absolute top-10 left-[55%] bg-[#DE0034] filter blur-[10rem] h-[100%] w-40 animate-pulse "></div>
           <div className="absolute top-10 left-[80%] bg-[#FF8C5B] filter blur-[12rem] h-80 w-80 animate-pulse "></div>
